@@ -4,14 +4,13 @@ import pandas as pd
 from OpcLabs.EasyOpc.DataAccess import *
 
 
-opc_server = 'Kepware.KEPServerEX.V6'
-opc_item_id_list = ['Simulation Examples.Functions.Ramp1', 'Simulation Examples.Functions.Random1']
-opc_item_id = 'Simulation Examples.Functions.Ramp1'
+opc_server = 'Kepware.KEPServerEX.V6' #OPC Server name
+opc_item_id_list = ['Simulation Examples.Functions.Ramp1', 'Simulation Examples.Functions.Random1'] #Lista de tags
 value = []
 
-client = EasyDAClient()
-#value = IEasyDAClientExtension.ReadItemValue(client, '', opc_server, opc_item_id)
+client = EasyDAClient() # inicia novo cliente OPC DA
 
+#Realiza a leitura da lista de tags conectando no OPC Server
 for opc_item in opc_item_id_list:
     value.append(IEasyDAClientExtension.ReadItem(client, '', opc_server, opc_item))
 
